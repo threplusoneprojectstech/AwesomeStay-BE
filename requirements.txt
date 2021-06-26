@@ -1,0 +1,5 @@
+pyclean
+fastapi
+uvicorn
+pymongo
+pymongo[srv]
