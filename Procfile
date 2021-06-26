@@ -1,1 +1,1 @@
-web: python run_asgi.py
+web: uvicorn Server.app:app --host=0.0.0.0 --port=${PORT:5000}
