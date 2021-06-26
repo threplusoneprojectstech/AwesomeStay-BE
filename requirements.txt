@@ -4,3 +4,4 @@ fastapi[all]
 uvicorn
 pymongo
 pymongo[srv]
+dnspython
