@@ -14,7 +14,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8000/",
+							"raw": "http://0.0.0.0:5000/",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -22,7 +22,7 @@
 								"0",
 								"0"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								""
 							]
@@ -36,7 +36,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://0.0.0.0:8000/clean",
+							"raw": "http://0.0.0.0:5000/clean",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -44,7 +44,7 @@
 								"0",
 								"0"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"clean"
 							]
@@ -72,7 +72,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8000/auth/register",
+							"raw": "http://0.0.0.0:5000/auth/register",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -80,7 +80,7 @@
 								"0",
 								"0"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"auth",
 								"register"
@@ -91,11 +91,8 @@
 				},
 				{
 					"name": "Login",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -107,7 +104,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8000/auth/login",
+							"raw": "http://0.0.0.0:5000/auth/login",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -115,7 +112,7 @@
 								"0",
 								"0"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"auth",
 								"login"
@@ -126,11 +123,8 @@
 				},
 				{
 					"name": "Get User Details for Update",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -142,7 +136,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8000/auth/getdetails",
+							"raw": "http://0.0.0.0:5000/auth/getdetails",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -150,7 +144,7 @@
 								"0",
 								"0"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"auth",
 								"getdetails"
@@ -166,7 +160,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"id\": \"60d57cefe203d7f223425bfa\",\r\n    \"username\": \"cornel\",\r\n    \"updateEmail\": \"cornel12@gmail.com\",\r\n    \"password\": \"cornel\"\r\n}",
+							"raw": "{\r\n    \"id\": \"60de7229ba738aff891a0698\",\r\n    \"username\": \"cornel\",\r\n    \"updateEmail\": \"cornel12@gmail.com\",\r\n    \"password\": \"cornel\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -174,7 +168,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:8000/auth/update/email",
+							"raw": "http://0.0.0.0:5000/auth/update/email",
 							"protocol": "http",
 							"host": [
 								"0",
@@ -182,7 +176,7 @@
 								"0",
 								"0"
 							],
-							"port": "8000",
+							"port": "5000",
 							"path": [
 								"auth",
 								"update",
@@ -191,8 +185,94 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update Phone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"60de7229ba738aff891a0698\",\r\n    \"username\": \"cornel\",\r\n    \"updatePhone\": \"081233449901\",\r\n    \"password\": \"cornel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/auth/update/phone",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"update",
+								"phone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"60de7229ba738aff891a0698\",\r\n    \"username\": \"cornel\",\r\n    \"updatePassword\": \"cornel123\",\r\n    \"password\": \"cornel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/auth/update/phone",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"update",
+								"phone"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "heroku url",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://fastapi-mongodb.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"fastapi-mongodb",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
