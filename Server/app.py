@@ -1,11 +1,20 @@
+## Package Import ##
+import os
 from fastapi import FastAPI
+from fastapi.security import HTTPBearer
 from fastapi.middleware.cors import CORSMiddleware
+## AppCode Import ##
 from Server.Routes.MainRoute import MainRoute
 from Server.Routes.AuthRoute import AuthRoute
-import os
 
-os.system("pyclean .")
+###############################################################################
+
+os.system("pyclean . -q")
 app = FastAPI()
+security = HTTPBearer()
+
+###############################################################################
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

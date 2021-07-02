@@ -1,33 +1,37 @@
+## Package Import ##
 from fastapi import APIRouter, Body
-from Server.Controller.DatabaseController import initialize_database
-
+from fastapi.param_functions import Depends
+## AppCode Import ##
 from Server.Controller.AuthController import *
 from Server.Model.AuthRequestModel import *
+from Server.Utility.JWT import JWTBearer
 
+###############################################################################
 
 AuthRoute = APIRouter()
-USER_COLLECTION = initialize_database("user")
+
+###############################################################################
 
 @AuthRoute.post("/auth/register")
 async def register(body: ModelRegisterRequest):
-    return await auth_register(USER_COLLECTION, body);
+    return await auth_register(body);
 
-@AuthRoute.get("/auth/login")
+@AuthRoute.post("/auth/login")
 async def login(body: ModelLoginRequest):
-    return await auth_login(USER_COLLECTION, body)
+    return await auth_login(body)
 
-@AuthRoute.get("/auth/getdetails")
+@AuthRoute.post("/auth/getdetails", dependencies=[Depends(JWTBearer())])
 async def get_details(body: ModelUserDetailRequest):
-    return await auth_user_details(USER_COLLECTION, body)
+    return await auth_user_details(body)
 
-@AuthRoute.post("/auth/update/email")
+@AuthRoute.post("/auth/update/email", dependencies=[Depends(JWTBearer())])
 async def update_email(body: ModelUpdateUserEmailRequest):
-    return await auth_update_user_email(USER_COLLECTION, body)
+    return await auth_update_user_email(body)
 
-@AuthRoute.post("/auth/update/phone")
+@AuthRoute.post("/auth/update/phone", dependencies=[Depends(JWTBearer())])
 async def update_email(body: ModelUpdateUserPhoneRequest):
-    return await auth_update_user_phone(USER_COLLECTION, body)
+    return await auth_update_user_phone(body)
 
-@AuthRoute.post("/auth/update/password")
+@AuthRoute.post("/auth/update/password", dependencies=[Depends(JWTBearer())])
 async def update_email(body: ModelUpdateUserPasswordRequest):
-    return await auth_update_user_password(USER_COLLECTION, body)
+    return await auth_update_user_password(body)

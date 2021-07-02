@@ -1,20 +1,39 @@
+## Package Import ##
 import os
 from fastapi import APIRouter, Body
+## AppCode Import ##
 from Server.Model.BaseOutputModel import BaseOutputModel
 
+###############################################################################
+
 MainRoute = APIRouter()
+
+###############################################################################
 
 @MainRoute.get("/")
 async def root():
     retVal = BaseOutputModel()
-    retVal.status = 1
-    retVal.result = "hello there"
-    return retVal;
+    try:
+        retVal.status = 1
+        retVal.result = "hello there"
+        return retVal;
+    except:
+        retVal.message = "API error"
+        retVal.status = 0
+        return retVal
 
 @MainRoute.get("/clean")
 async def clean():
-    os.system("pyclean .")
     retVal = BaseOutputModel()
-    retVal.status = 1
-    retVal.result = "Pycache Cleaned"
-    return retVal
+    try:
+        os.system("pyclean . -q")
+        retVal.status = 1
+        retVal.result = "Pycache Cleaned"
+        return retVal
+    except:
+        retVal.message = "API error"
+        retVal.status = 0
+        return retVal
+    
+# @MainRoute.get("/token")
+# async def token():

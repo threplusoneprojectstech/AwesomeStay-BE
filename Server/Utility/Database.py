@@ -2,7 +2,7 @@ import os
 from json import load
 from pymongo import MongoClient
 
-def initialize_database(collection_name):
+def initialize_database_connection(collection_name):
     connection_string = ""
     try:
         config = load( open("Server/config.json") )
