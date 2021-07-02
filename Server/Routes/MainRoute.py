@@ -1,8 +1,10 @@
 ## Package Import ##
 import os
-from fastapi import APIRouter, Body
+from fastapi import APIRouter
+from fastapi.param_functions import Depends
 ## AppCode Import ##
 from Server.Model.BaseOutputModel import BaseOutputModel
+from Server.Utility.JWT import JWTBearer
 
 ###############################################################################
 
@@ -35,5 +37,14 @@ async def clean():
         retVal.status = 0
         return retVal
     
-# @MainRoute.get("/token")
-# async def token():
+@MainRoute.get("/verifytoken", dependencies=[Depends(JWTBearer())])
+async def verifytoken():
+    retVal = BaseOutputModel()
+    try:
+        retVal.status = 1
+        retVal.result = "Token is valid"
+        return retVal;
+    except:
+        retVal.message = "API error"
+        retVal.status = 0
+        return retVal
