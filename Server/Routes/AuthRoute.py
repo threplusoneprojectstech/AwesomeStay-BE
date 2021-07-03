@@ -29,9 +29,13 @@ async def update_email(body: ModelUpdateUserEmailRequest):
     return await auth_update_user_email(body)
 
 @AuthRoute.post("/auth/update/phone", dependencies=[Depends(JWTBearer())])
-async def update_email(body: ModelUpdateUserPhoneRequest):
+async def update_phone(body: ModelUpdateUserPhoneRequest):
     return await auth_update_user_phone(body)
 
 @AuthRoute.post("/auth/update/password", dependencies=[Depends(JWTBearer())])
-async def update_email(body: ModelUpdateUserPasswordRequest):
+async def update_password(body: ModelUpdateUserPasswordRequest):
     return await auth_update_user_password(body)
+
+@AuthRoute.post("/auth/update/debit", dependencies=[Depends(JWTBearer())])
+async def update_debit(body: ModelUpdateUserDebitRequest):
+    return await auth_update_user_debit(body)

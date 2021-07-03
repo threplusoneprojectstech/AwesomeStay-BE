@@ -1,41 +1,48 @@
 from pydantic import BaseModel
-from pydantic.networks import stricturl 
 
 class ModelRegisterRequest(BaseModel):
-    username:str
+    fullName:str
     email:str
     phone:str
+    debit:str
     password:str
 
     def getInsertJson(this):
         return {
-            "username":this.username,
+            "fullName":this.fullName,
             "email":this.email,
             "phone":this.phone,
+            "debit":this.debit,
             "password":this.password
         }
     
 class ModelLoginRequest(BaseModel):
-    username:str
+    email:str
     password:str
     
 class ModelUserDetailRequest(BaseModel):
-    username:str
+    email:str
 
 class ModelUpdateUserEmailRequest(BaseModel):
     id:str
-    username:str
+    email:str
     password:str
     updateEmail:str
 
 class ModelUpdateUserPhoneRequest(BaseModel):
     id:str
-    username:str
+    email:str
     password:str
     updatePhone:str
 
 class ModelUpdateUserPasswordRequest(BaseModel):
     id:str
-    username:str
+    email:str
     password:str
     updatePassword:str
+
+class ModelUpdateUserDebitRequest(BaseModel):
+    id:str
+    email:str
+    password:str
+    updateDebit:str

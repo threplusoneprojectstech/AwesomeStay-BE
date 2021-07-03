@@ -17,12 +17,11 @@ async def auth_register(body:ModelRegisterRequest):
     retVal = BaseOutputModel()
     try:
         query = { "$or":[
-            {"username":body.username},
             {"email":body.email},
             {"phone":body.phone}
         ] }
         if UserRep.GetOne(query) != None:
-            retVal.message = "username / email / phone already taken"
+            retVal.message = "email / phone already taken"
             retVal.status = 0
             return retVal
         else:
@@ -50,7 +49,7 @@ async def auth_register(body:ModelRegisterRequest):
 async def auth_login(body:ModelLoginRequest):
     retVal = BaseOutputModel()
     try:
-        query = { "username":body.username }
+        query = { "email":body.email }
         currUser = UserRep.GetOne(query)
         if currUser == None:
             retVal.message = "user not found"
@@ -78,7 +77,7 @@ async def auth_login(body:ModelLoginRequest):
 async def auth_user_details(body:ModelUserDetailRequest):
     retVal = BaseOutputModel()
     try:
-        query = { "username":body.username }
+        query = { "email":body.username }
         currUser = UserRep.GetOne(query)
 
         if currUser == None:
@@ -104,12 +103,10 @@ async def auth_update_user_email(body:ModelUpdateUserEmailRequest):
     try:
         query_validation = { "$and":[
             { "email" : body.updateEmail },
-            { "_id" : { "$ne":ObjectId(body.id) } },
-            { "username" : { "$ne":body.username } }
+            { "_id" : { "$ne":ObjectId(body.id) } }
         ] }
         query_account = { "$and":[
-            { "_id" : ObjectId(body.id) },
-            { "username" : body.username }
+            { "_id" : ObjectId(body.id) }
         ] }
 
         email_validation = UserRep.GetOne(query_validation)
@@ -152,12 +149,10 @@ async def auth_update_user_phone(body:ModelUpdateUserPhoneRequest):
     try:
         query_validation = { "$and":[
             { "phone" : body.updatePhone },
-            { "_id" : { "$ne":ObjectId(body.id) } },
-            { "username" : { "$ne":body.username } }
+            { "_id" : { "$ne":ObjectId(body.id) } }
         ] }
         query_account = { "$and":[
-            { "_id" : ObjectId(body.id) },
-            { "username" : body.username }
+            { "_id" : ObjectId(body.id) }
         ] }
 
         phone_validation = UserRep.GetOne(query_validation)
@@ -199,8 +194,7 @@ async def auth_update_user_password(body:ModelUpdateUserPasswordRequest):
     retVal = BaseOutputModel()
     try:
         query_account = { "$and":[
-            { "_id" : ObjectId(body.id) },
-            { "username" : body.username }
+            { "_id" : ObjectId(body.id) }
         ] }
 
         currUser = UserRep.GetOne(query_account)
@@ -225,6 +219,43 @@ async def auth_update_user_password(body:ModelUpdateUserPasswordRequest):
             currUser.pop("phone")
             retVal.result = currUser
             retVal.message = "password updated"
+            retVal.status = 1
+            return retVal
+    except:
+        retVal.message = "API error"
+        retVal.status = 0
+        return retVal
+
+###############################################################################
+
+async def auth_update_user_debit(body:ModelUpdateUserDebitRequest):
+    retVal = BaseOutputModel()
+    try:
+        query_account = { "$and":[
+            { "_id" : ObjectId(body.id) }
+        ] }
+
+        currUser = UserRep.GetOne(query_account)
+        
+        if  currUser == None:
+            retVal.message = "user not found"
+            retVal.status = 0
+            return retVal
+        if VerifyHash(currUser["password"], body.password) == False:
+            retVal.message = "wrong password"
+            retVal.status = 0
+            return retVal
+        else:
+            set_value = { "$set":
+                { "debit" : body.updateDebit }
+            }
+            UserRep.Update(query_account, set_value)
+            currUser["_id"] = str(currUser["_id"])
+            currUser.pop("email")
+            currUser.pop("phone")
+            currUser.pop("password")
+            retVal.result = currUser
+            retVal.message = "debit"
             retVal.status = 1
             return retVal
     except:
