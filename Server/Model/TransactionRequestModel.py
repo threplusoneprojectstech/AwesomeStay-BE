@@ -12,3 +12,6 @@ class TransactionCreateRequestModel(BaseModel):
     
 class TransactionGetRequestModel(BaseModel):
     email:str
+
+class TransactionSpecificRequestMoodel(BaseModel):
+    id:str

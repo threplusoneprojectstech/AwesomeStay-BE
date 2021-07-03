@@ -19,3 +19,7 @@ async def insert_transaction(body: TransactionCreateRequestModel) -> BaseOutputM
 @TransactionRoute.post("/transaction/get")
 async def insert_transaction(body: TransactionGetRequestModel) -> BaseOutputModel:
     return await get_my_transaction(body);
+
+@TransactionRoute.post("/transaction/getspecific")
+async def insert_transaction(body: TransactionSpecificRequestMoodel) -> BaseOutputModel:
+    return await get_specific_transaction(body)

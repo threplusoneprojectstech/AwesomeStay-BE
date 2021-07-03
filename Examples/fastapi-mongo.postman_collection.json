@@ -581,6 +581,38 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Specific Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60e03e17f5305287523c5c8f\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/transaction/getspecific",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"transaction",
+								"getspecific"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
