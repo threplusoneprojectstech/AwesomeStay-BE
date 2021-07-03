@@ -1,15 +1,18 @@
 ## Package Import ##
+import uuid
 from bson.objectid import ObjectId
 ## AppCode Import ##
 from Server.Model.BaseOutputModel import BaseOutputModel
 from Server.Model.AuthRequestModel import *
 from Server.Repository.UserRepository import UserRepository
+from Server.Repository.ChatRepository import ChatRepository
 from Server.Utility.Hashing import *
 from Server.Utility.JWT import SignJWT
 
 ###############################################################################
 
 UserRep = UserRepository()
+RepChat = ChatRepository()
 
 ###############################################################################
 
@@ -31,6 +34,13 @@ async def auth_register(body:ModelRegisterRequest):
                 retVal.message = "failed registering user"
                 retVal.status = 0
                 return retVal
+            
+            chatData = {
+                "cid":str(uuid.uuid4()),
+                "userEmail":body.email,
+                "chats":[]
+            }
+            RepChat.Insert(chatData)
 
             currUser = UserRep.GetOne(query)
             
