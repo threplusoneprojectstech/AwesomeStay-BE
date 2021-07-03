@@ -13,5 +13,5 @@ class SendChatRequest(BaseModel):
         return {
             "ts":datetime.now().strftime("%m/%d/%Y, %H:%M:%S"),
             "message":this.message,
-            "isUser":this.message
+            "isUser":this.isUser
         }

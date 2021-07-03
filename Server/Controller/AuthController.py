@@ -11,7 +11,7 @@ from Server.Utility.JWT import SignJWT
 
 ###############################################################################
 
-UserRep = UserRepository()
+RepUser = UserRepository()
 RepChat = ChatRepository()
 
 ###############################################################################
@@ -23,14 +23,14 @@ async def auth_register(body:ModelRegisterRequest):
             {"email":body.email},
             {"phone":body.phone}
         ] }
-        if UserRep.GetOne(query) != None:
+        if RepUser.GetOne(query) != None:
             retVal.message = "email / phone already taken"
             retVal.status = 0
             return retVal
         else:
             body.password = GenerateHash(body.password)
 
-            if UserRep.Insert(body.getInsertJson()) == False:
+            if RepUser.Insert(body.getInsertJson()) == False:
                 retVal.message = "failed registering user"
                 retVal.status = 0
                 return retVal
@@ -42,7 +42,7 @@ async def auth_register(body:ModelRegisterRequest):
             }
             RepChat.Insert(chatData)
 
-            currUser = UserRep.GetOne(query)
+            currUser = RepUser.GetOne(query)
             
             currUser["_id"] = str(currUser["_id"])
             retVal.message = "user registered"
@@ -60,7 +60,7 @@ async def auth_login(body:ModelLoginRequest):
     retVal = BaseOutputModel()
     try:
         query = { "email":body.email }
-        currUser = UserRep.GetOne(query)
+        currUser = RepUser.GetOne(query)
         if currUser == None:
             retVal.message = "user not found"
             retVal.status = 0
@@ -88,7 +88,7 @@ async def auth_user_details(body:ModelUserDetailRequest):
     retVal = BaseOutputModel()
     try:
         query = { "email":body.username }
-        currUser = UserRep.GetOne(query)
+        currUser = RepUser.GetOne(query)
 
         if currUser == None:
             retVal.message = "user not found"
@@ -119,8 +119,8 @@ async def auth_update_user_email(body:ModelUpdateUserEmailRequest):
             { "_id" : ObjectId(body.id) }
         ] }
 
-        email_validation = UserRep.GetOne(query_validation)
-        currUser = UserRep.GetOne(query_account)
+        email_validation = RepUser.GetOne(query_validation)
+        currUser = RepUser.GetOne(query_account)
         
         if  email_validation != None:
             retVal.message = "email already taken"
@@ -138,7 +138,7 @@ async def auth_update_user_email(body:ModelUpdateUserEmailRequest):
             set_value = { "$set":
                 { "email" : body.updateEmail }
             }
-            UserRep.Update(query_account, set_value)
+            RepUser.Update(query_account, set_value)
             currUser["_id"] = str(currUser["_id"])
             currUser["email"] = body.updateEmail
             currUser.pop("password")
@@ -165,8 +165,8 @@ async def auth_update_user_phone(body:ModelUpdateUserPhoneRequest):
             { "_id" : ObjectId(body.id) }
         ] }
 
-        phone_validation = UserRep.GetOne(query_validation)
-        currUser = UserRep.GetOne(query_account)
+        phone_validation = RepUser.GetOne(query_validation)
+        currUser = RepUser.GetOne(query_account)
         
         if  phone_validation != None:
             retVal.message = "phone already taken"
@@ -184,7 +184,7 @@ async def auth_update_user_phone(body:ModelUpdateUserPhoneRequest):
             set_value = { "$set":
                 { "phone" : body.updatePhone }
             }
-            UserRep.update_one(query_account, set_value)
+            RepUser.update_one(query_account, set_value)
             currUser["_id"] = str(currUser["_id"])
             currUser["phone"] = body.updatePhone
             currUser.pop("password")
@@ -207,7 +207,7 @@ async def auth_update_user_password(body:ModelUpdateUserPasswordRequest):
             { "_id" : ObjectId(body.id) }
         ] }
 
-        currUser = UserRep.GetOne(query_account)
+        currUser = RepUser.GetOne(query_account)
         
         if  currUser == None:
             retVal.message = "user not found"
@@ -222,7 +222,7 @@ async def auth_update_user_password(body:ModelUpdateUserPasswordRequest):
             set_value = { "$set":
                 { "password" : body.updatePassword }
             }
-            UserRep.Update(query_account, set_value)
+            RepUser.Update(query_account, set_value)
             currUser["_id"] = str(currUser["_id"])
             currUser["password"] = body.updatePassword
             currUser.pop("email")
@@ -245,7 +245,7 @@ async def auth_update_user_debit(body:ModelUpdateUserDebitRequest):
             { "_id" : ObjectId(body.id) }
         ] }
 
-        currUser = UserRep.GetOne(query_account)
+        currUser = RepUser.GetOne(query_account)
         
         if  currUser == None:
             retVal.message = "user not found"
@@ -259,7 +259,7 @@ async def auth_update_user_debit(body:ModelUpdateUserDebitRequest):
             set_value = { "$set":
                 { "debit" : body.updateDebit }
             }
-            UserRep.Update(query_account, set_value)
+            RepUser.Update(query_account, set_value)
             currUser["_id"] = str(currUser["_id"])
             currUser.pop("email")
             currUser.pop("phone")

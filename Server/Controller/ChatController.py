@@ -8,13 +8,14 @@ RepChat = ChatRepository()
 
 ###############################################################################
 
-async def get_my_chat(body: ChatIdGetRequest):
+async def chat_get(body: ChatIdGetRequest):
     retVal = BaseOutputModel()
     try:
-        q = {"$and":[
+        query = {"$and":[
             {"userEmail":body.email}
         ]}
-        curr = RepChat.GetOne(q)
+        curr = RepChat.GetOne(query)
+
         curr['_id'] = str(curr['_id'])
         retVal.status = 1
         retVal.message = "success"
@@ -25,14 +26,16 @@ async def get_my_chat(body: ChatIdGetRequest):
         retVal.status = 0
         return retVal
 
-    
-async def send_chat(body: SendChatRequest):
+###############################################################################
+
+async def chat_send(body: SendChatRequest):
     retVal = BaseOutputModel()
     try:
-        q = {"$and":[
+        query = {"$and":[
             {"userEmail":body.email}
         ]}
-        curr = RepChat.GetOne(q)
+        curr = RepChat.GetOne(query)
+
         if curr == None:
             retVal.status=0
             retVal.message="chat not found"
@@ -40,10 +43,10 @@ async def send_chat(body: SendChatRequest):
         curr['_id'] = str(curr['_id'])
         chat_rows = list(curr["chats"])
         chat_rows.append(body.get_insert_json())
-        update_q = { "$set":
+        update_data = { "$set":
             { "chats" : chat_rows }
         }
-        RepChat.Update(q, update_q)
+        RepChat.Update(query, update_data)
         retVal.message = "done"
         retVal.status = 1
         return retVal

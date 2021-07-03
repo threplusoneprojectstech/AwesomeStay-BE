@@ -56,12 +56,12 @@ async def product_get_pages(body:PageModel) -> BaseOutputModel:
 async def product_get_details(body:ProductDetailRequestModel):
     retVal = BaseOutputModel()
     try:
-        q = { "$and": [
+        query = { "$and": [
             { "_id" : ObjectId(body.id) }
         ] }
-        data = RepProduct.GetOne(q)
+        data = RepProduct.GetOne(query)
         if data == None:
-            retVal.message = "product notfound"
+            retVal.message = "product not found"
             retVal.status = 0
             return retVal
         data["_id"] = str(data["_id"])

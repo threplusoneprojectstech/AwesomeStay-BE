@@ -10,7 +10,7 @@ RepTrans = TransactionRepository()
 
 ###############################################################################
 
-async def make_transaction(body:TransactionCreateRequestModel):
+async def transaction_new(body:TransactionCreateRequestModel):
     retVal = BaseOutputModel()
     try:
         if RepTrans.Insert(body.get_insert_json()) == False:
@@ -28,13 +28,13 @@ async def make_transaction(body:TransactionCreateRequestModel):
     
 ###############################################################################
 
-async def get_my_transaction(body:TransactionGetRequestModel):
+async def transaction_getall(body:TransactionGetRequestModel):
     retVal = BaseOutputModel()
     try:
-        q = { "$and":[
+        query = { "$and":[
             {"email":body.email}
         ] }
-        data = RepTrans.Get(q)
+        data = RepTrans.Get(query)
         if data == None:
             retVal.message = "data not found"
             retVal.status = 0
@@ -53,13 +53,13 @@ async def get_my_transaction(body:TransactionGetRequestModel):
     
 ###############################################################################
 
-async def get_specific_transaction(body:TransactionSpecificRequestMoodel):
+async def transaction_get_specific(body:TransactionSpecificRequestMoodel):
     retVal = BaseOutputModel()
     try:
-        q = { "$and": [
+        query = { "$and": [
             { "_id":ObjectId(body.id) }
         ]}
-        data = RepTrans.GetOne(q)
+        data = RepTrans.GetOne(query)
         if data == None:
             retVal.message = "data not found"
             retVal.status = 0

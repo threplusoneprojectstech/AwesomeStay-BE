@@ -14,12 +14,12 @@ TransactionRoute = APIRouter()
 
 @TransactionRoute.post("/transaction/insert")
 async def insert_transaction(body: TransactionCreateRequestModel) -> BaseOutputModel:
-    return await make_transaction(body);
+    return await transaction_new(body);
 
 @TransactionRoute.post("/transaction/get")
 async def insert_transaction(body: TransactionGetRequestModel) -> BaseOutputModel:
-    return await get_my_transaction(body);
+    return await transaction_getall(body);
 
 @TransactionRoute.post("/transaction/getspecific")
 async def insert_transaction(body: TransactionSpecificRequestMoodel) -> BaseOutputModel:
-    return await get_specific_transaction(body)
+    return await transaction_get_specific(body)

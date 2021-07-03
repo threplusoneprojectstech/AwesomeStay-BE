@@ -6,7 +6,7 @@ from Server.Utility.JWT import SignJWT
 
 ###############################################################################
 
-AdminRep = AdminRepository()
+RepAdmin = AdminRepository()
 
 ###############################################################################
 
@@ -14,23 +14,23 @@ async def admin_insert(body:ModelInsertRequest):
     retVal = BaseOutputModel()
     try:
         query = { "$or":[
-                {"username":body.username},
-                {"email":body.email},
-                {"phone":body.phone}
-            ] }
-        if AdminRep.GetOne(query) != None:
+            {"username":body.username},
+            {"email":body.email},
+            {"phone":body.phone}
+        ] }
+        if RepAdmin.GetOne(query) != None:
             retVal.message = "username / email / phone already taken"
             retVal.status = 0
             return retVal
         else:
             body.password = GenerateHash(body.password)
 
-            if AdminRep.Insert(body.getInsertJson()) == False:
+            if RepAdmin.Insert(body.getInsertJson()) == False:
                 retVal.message = "failed registering admin"
                 retVal.status = 0
                 return retVal
 
-            currUser = AdminRep.GetOne(query)
+            currUser = RepAdmin.GetOne(query)
             
             currUser["_id"] = str(currUser["_id"])
             retVal.message = "admin registered"
@@ -48,7 +48,7 @@ async def admin_login(body:ModelLoginRequest):
     retVal = BaseOutputModel()
     try:
         query = { "username":body.username }
-        currUser = AdminRep.GetOne(query)
+        currUser = RepAdmin.GetOne(query)
         if currUser == None:
             retVal.message = "admin not found"
             retVal.status = 0
