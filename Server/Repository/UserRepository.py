@@ -1,4 +1,3 @@
-from pymongo.message import query
 from Server.Utility.Database import initialize_database_connection
 
 class UserRepository():
@@ -14,7 +13,7 @@ class UserRepository():
 
     def Get(this, Query=None):
         try:
-            if query:
+            if Query:
                 return this._user.find(Query)
             else:
                 return this._user.find()

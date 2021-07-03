@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from Server.Routes.MainRoute import MainRoute
 from Server.Routes.AuthRoute import AuthRoute
 from Server.Routes.AdminRoute import AdminRoute
+from Server.Routes.ProductRoute import ProductRoute
 
 ###############################################################################
 
@@ -27,3 +28,4 @@ app.add_middleware(
 app.include_router(MainRoute, tags=["Main"])
 app.include_router(AuthRoute, tags=["Auth"])
 app.include_router(AdminRoute, tags=["Admin"])
+app.include_router(ProductRoute, tags=["Product"])
