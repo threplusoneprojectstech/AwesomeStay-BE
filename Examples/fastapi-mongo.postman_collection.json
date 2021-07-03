@@ -51,6 +51,28 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Verify Token",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:5000/verifytoken",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"verifytoken"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -64,7 +86,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"cornel\",\r\n    \"email\":\"cornel@gmail.com\",\r\n    \"phone\":\"081233449900\",\r\n    \"password\":\"cornel\"\r\n}",
+							"raw": "{\r\n    \"fullName\":\"Cornelius Tantius\",\r\n    \"email\":\"cornel@gmail.com\",\r\n    \"phone\":\"081233449900\",\r\n    \"debit\":\"\",\r\n    \"password\":\"cornel\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -96,7 +118,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"username\":\"cornel\",\r\n    \"password\":\"cornel\"\r\n}",
+							"raw": "{\r\n    \"email\":\"cornel@gmail.com\",\r\n    \"password\":\"cornel\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -104,13 +126,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://0.0.0.0:5000/auth/login",
+							"raw": "http://127.0.0.1:5000/auth/login",
 							"protocol": "http",
 							"host": [
+								"127",
 								"0",
 								"0",
-								"0",
-								"0"
+								"1"
 							],
 							"port": "5000",
 							"path": [
@@ -255,15 +277,323 @@
 			]
 		},
 		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Register Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"cornel\",\r\n    \"email\":\"cornel@gmail.com\",\r\n    \"phone\":\"081233449900\",\r\n    \"password\":\"cornel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/admin/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"cornel\",\r\n    \"password\":\"cornel\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/admin/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Insert Product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productName\": \"Falmingo Unicorn Bubble Villa\",\r\n  \"thumbnailUrl\": \"https://drive.google.com/thumbnail?id=11QHYuRR2j6zQCMVZXKeyH8FayRv9EMuW\",\r\n  \"price\": 1499999.99,\r\n  \"category\": \"villa\",\r\n  \"description\": \"An amazing villa that is located in Unicorn Ville, a very quiet place with amazing weather.\",\r\n  \"morePictureUrl\": [\r\n    \"https://drive.google.com/thumbnail?id=11QHYuRR2j6zQCMVZXKeyH8FayRv9EMuW\",\r\n    \"https://drive.google.com/thumbnail?id=16NuhACZYWszG20HVST1ikSmaUKAQqsQO\",\r\n    \"https://drive.google.com/thumbnail?id=19A1uIvqFPLeHtU1KV3FkgtEuKBSlnjxg\",\r\n    \"https://drive.google.com/thumbnail?id=1dlivQlyWegknSX65nM1JTG98KHhmLqi6\",\r\n    \"https://drive.google.com/thumbnail?id=1cEklu00E218L5k9VXBuIMbTosyFl4vcX\"\r\n  ],\r\n  \"location\": \"Unicorn Ville\",\r\n  \"rating\": 4.8,\r\n  \"userRateCount\": 128,\r\n  \"userReview\": [\r\n    \"Amazing villa\",\r\n    \"Cute unicorn everywhere\",\r\n    \"Love this place so much!\",\r\n    \"Very calming environment\"\r\n  ],\r\n  \"facility\": [\r\n    \"Villa\",\r\n    \"Outdoor tent\",\r\n    \"Fullsize pool\",\r\n    \"Candle dinner set\",\r\n    \"Flamingo bubble\",\r\n    \"Unicorn bubble\"\r\n  ],\r\n  \"stock\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/product/insert",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"product",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAll Product (all category)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pageNumber\":1,\r\n    \"pageSize\":10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/product/getpages",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"product",
+								"getpages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Details",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"60e028a8ea7ad49644d9c1f8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/product/getdetails",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"product",
+								"getdetails"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat",
+			"item": [
+				{
+					"name": "Get my chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cornel@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/chat/get",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"chat",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cornel@gmail.com\",\r\n    \"message\":\"Halo kak\",\r\n    \"isUser\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:5000/chat/send",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "5000",
+							"path": [
+								"chat",
+								"send"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cornel@gmail.com\",\r\n    \"orders\":[\r\n        \"60e028a8ea7ad49644d9c1f8\",\r\n        \"60dfefa63c39653b63a3d433\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/transaction/insert",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"transaction",
+								"insert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Transaction",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"cornel@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:5000/transaction/get",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "5000",
+							"path": [
+								"transaction",
+								"get"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "heroku url",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://fastapi-mongodb.herokuapp.com/",
+					"raw": "https://awesome-stay-api.herokuapp.com/",
 					"protocol": "https",
 					"host": [
-						"fastapi-mongodb",
+						"awesome-stay-api",
 						"herokuapp",
 						"com"
 					],

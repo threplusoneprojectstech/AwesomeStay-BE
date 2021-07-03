@@ -9,6 +9,7 @@ from Server.Routes.AuthRoute import AuthRoute
 from Server.Routes.AdminRoute import AdminRoute
 from Server.Routes.ProductRoute import ProductRoute
 from Server.Routes.ChatRoute import ChatRouter
+from Server.Routes.TransactionRoute import TransactionRoute
 
 ###############################################################################
 
@@ -30,4 +31,5 @@ app.include_router(MainRoute, tags=["Main"])
 app.include_router(AuthRoute, tags=["Auth"])
 app.include_router(AdminRoute, tags=["Admin"])
 app.include_router(ProductRoute, tags=["Product"])
-app.include_router(ChatRouter, tags=["chat"])
+app.include_router(ChatRouter, tags=["Chat"])
+app.include_router(TransactionRoute, tags=["Transaction"])
