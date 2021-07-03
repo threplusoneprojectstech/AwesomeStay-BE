@@ -58,29 +58,29 @@ async def auth_register(body:ModelRegisterRequest):
 
 async def auth_login(body:ModelLoginRequest):
     retVal = BaseOutputModel()
-    try:
-        query = { "email":body.email }
-        currUser = RepUser.GetOne(query)
-        if currUser == None:
-            retVal.message = "user not found"
-            retVal.status = 0
-            return retVal
-        else:
-            if VerifyHash(currUser["password"], body.password):
-                currUser["_id"] = str(currUser["_id"])
-                currUser["token"] = SignJWT(currUser["_id"])
-                retVal.message = "user logged in"
-                retVal.result = currUser
-                retVal.status = 1
-                return retVal
-            else:
-                retVal.message = "wrong password"
-                retVal.status = 0
-                return retVal
-    except:
-        retVal.message = "API error"
+    # try:
+    query = { "email":body.email }
+    currUser = RepUser.GetOne(query)
+    if currUser == None:
+        retVal.message = "user not found"
         retVal.status = 0
         return retVal
+    else:
+        if VerifyHash(currUser["password"], body.password):
+            currUser["_id"] = str(currUser["_id"])
+            currUser["token"] = SignJWT(currUser["_id"])
+            retVal.message = "user logged in"
+            retVal.result = currUser
+            retVal.status = 1
+            return retVal
+        else:
+            retVal.message = "wrong password"
+            retVal.status = 0
+            return retVal
+    # except:
+    #     retVal.message = "API error"
+    #     retVal.status = 0
+    #     return retVal
 
 ###############################################################################
 
