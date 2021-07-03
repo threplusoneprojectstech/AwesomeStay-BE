@@ -1,5 +1,4 @@
 ## Package Import ##
-from Server.Controller.ChatController import get_my_chat
 from fastapi import APIRouter, Body
 from fastapi.param_functions import Depends
 ## AppCode Import ##
