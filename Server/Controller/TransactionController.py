@@ -13,12 +13,14 @@ RepTrans = TransactionRepository()
 async def transaction_new(body:TransactionCreateRequestModel):
     retVal = BaseOutputModel()
     try:
-        if RepTrans.Insert(body.get_insert_json()) == False:
+        res = RepTrans.InsertId(body.get_insert_json())
+        if res == False:
             retVal.message = "failed inserting transaction"
             retVal.status = 0
             return retVal
         retVal.message = "transaction inserted"
         retVal.result = body.get_insert_json()
+        retVal.result["_id"] = str(res)
         retVal.status = 1
         return retVal
     except:

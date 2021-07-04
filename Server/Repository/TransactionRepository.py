@@ -28,6 +28,12 @@ class TransactionRepository():
         except Exception as e:
             print(e)
             return False
+    def InsertId(this, data):
+        try:
+            return this._transaction.insert_one(data).inserted_id
+        except Exception as e:
+            print(e)
+            return False
 
     def Update(this, Query=None, Data=None):
         try:
