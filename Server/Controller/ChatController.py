@@ -54,3 +54,23 @@ async def chat_send(body: SendChatRequest):
         retVal.message = "API error"
         retVal.status = 0
         return retVal
+
+###############################################################################
+  
+async def chat_getall():
+    retVal = BaseOutputModel()
+    try:
+        chats = RepChat.Get()
+        
+        retVal.status = 1
+        retVal.message = "success"
+        retVal.result = []
+        for curr in chats:
+            curr['_id'] = str(curr['_id'])
+            curr.pop("chats")
+            retVal.result.append(curr)
+        return retVal
+    except:
+        retVal.message = "API error"
+        retVal.status = 0
+        return retVal
