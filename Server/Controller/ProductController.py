@@ -47,6 +47,8 @@ async def product_get_pages(body:PageModel) -> BaseOutputModel:
             "pageSize":size,
             "items":paged_item
         }
+        retVal.status = 1
+        retVal.message = "success"
         return retVal
     except:
         retVal.message = "API error"
