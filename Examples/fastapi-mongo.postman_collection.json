@@ -126,13 +126,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/auth/login",
+							"raw": "http://0.0.0.0:5000/auth/login",
 							"protocol": "http",
 							"host": [
-								"127",
 								"0",
 								"0",
-								"1"
+								"0",
+								"0"
 							],
 							"port": "5000",
 							"path": [
@@ -294,13 +294,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/admin/register",
+							"raw": "http://0.0.0.0:5000/admin/register",
 							"protocol": "http",
 							"host": [
-								"127",
 								"0",
 								"0",
-								"1"
+								"0",
+								"0"
 							],
 							"port": "5000",
 							"path": [
@@ -326,13 +326,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/admin/login",
+							"raw": "http://0.0.0.0:5000/admin/login",
 							"protocol": "http",
 							"host": [
-								"127",
 								"0",
 								"0",
-								"1"
+								"0",
+								"0"
 							],
 							"port": "5000",
 							"path": [
@@ -355,7 +355,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"productName\": \"Falmingo Unicorn Bubble Villa\",\r\n  \"thumbnailUrl\": \"https://drive.google.com/thumbnail?id=11QHYuRR2j6zQCMVZXKeyH8FayRv9EMuW\",\r\n  \"price\": 1499999.99,\r\n  \"category\": \"villa\",\r\n  \"description\": \"An amazing villa that is located in Unicorn Ville, a very quiet place with amazing weather.\",\r\n  \"morePictureUrl\": [\r\n    \"https://drive.google.com/thumbnail?id=11QHYuRR2j6zQCMVZXKeyH8FayRv9EMuW\",\r\n    \"https://drive.google.com/thumbnail?id=16NuhACZYWszG20HVST1ikSmaUKAQqsQO\",\r\n    \"https://drive.google.com/thumbnail?id=19A1uIvqFPLeHtU1KV3FkgtEuKBSlnjxg\",\r\n    \"https://drive.google.com/thumbnail?id=1dlivQlyWegknSX65nM1JTG98KHhmLqi6\",\r\n    \"https://drive.google.com/thumbnail?id=1cEklu00E218L5k9VXBuIMbTosyFl4vcX\"\r\n  ],\r\n  \"location\": \"Unicorn Ville\",\r\n  \"rating\": 4.8,\r\n  \"userRateCount\": 128,\r\n  \"userReview\": [\r\n    \"Amazing villa\",\r\n    \"Cute unicorn everywhere\",\r\n    \"Love this place so much!\",\r\n    \"Very calming environment\"\r\n  ],\r\n  \"facility\": [\r\n    \"Villa\",\r\n    \"Outdoor tent\",\r\n    \"Fullsize pool\",\r\n    \"Candle dinner set\",\r\n    \"Flamingo bubble\",\r\n    \"Unicorn bubble\"\r\n  ],\r\n  \"stock\": 3\r\n}",
+							"raw": "{\r\n  \"productName\": \"Falmingo Unicorn Bubble Villa\",\r\n  \"thumbnailUrl\": \"https://drive.google.com/thumbnail?id=11QHYuRR2j6zQCMVZXKeyH8FayRv9EMuW\",\r\n  \"price\": 1499999.99,\r\n  \"category\": \"villa\",\r\n  \"description\": \"An amazing villa that is located in Unicorn Ville, a very quiet place with amazing weather.\",\r\n  \"morePictureUrl\": [\r\n    \"https://drive.google.com/thumbnail?id=11QHYuRR2j6zQCMVZXKeyH8FayRv9EMuW\",\r\n    \"https://drive.google.com/thumbnail?id=16NuhACZYWszG20HVST1ikSmaUKAQqsQO\",\r\n    \"https://drive.google.com/thumbnail?id=19A1uIvqFPLeHtU1KV3FkgtEuKBSlnjxg\",\r\n    \"https://drive.google.com/thumbnail?id=1dlivQlyWegknSX65nM1JTG98KHhmLqi6\",\r\n    \"https://drive.google.com/thumbnail?id=1cEklu00E218L5k9VXBuIMbTosyFl4vcX\"\r\n  ],\r\n  \"location\": \"Unicorn Ville\",\r\n  \"rating\": 4.8,\r\n  \"userRateCount\": 128,\r\n  \"userReview\": [\r\n    \"Amazing villa\",\r\n    \"Cute unicorn everywhere\",\r\n    \"Love this place so much!\",\r\n    \"Very calming environment\"\r\n  ],\r\n  \"facility\": [\r\n    \"Villa\", //kategori \"addon\", \"..\"\r\n    \"Outdoor tent\",\r\n    \"Fullsize pool\",\r\n    \"Candle dinner set\",\r\n    \"Flamingo bubble\",\r\n    \"Unicorn bubble\"\r\n  ],\r\n  \"stock\": 3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -363,13 +363,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/product/insert",
+							"raw": "http://0.0.0.0:5000/product/insert",
 							"protocol": "http",
 							"host": [
-								"127",
 								"0",
 								"0",
-								"1"
+								"0",
+								"0"
 							],
 							"port": "5000",
 							"path": [
@@ -395,13 +395,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/product/getpages",
+							"raw": "http://0.0.0.0:5000/product/getpages",
 							"protocol": "http",
 							"host": [
-								"127",
 								"0",
 								"0",
-								"1"
+								"0",
+								"0"
 							],
 							"port": "5000",
 							"path": [
@@ -427,13 +427,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/product/getdetails",
+							"raw": "http://0.0.0.0:5000/product/getdetails",
 							"protocol": "http",
 							"host": [
-								"127",
 								"0",
 								"0",
-								"1"
+								"0",
+								"0"
 							],
 							"port": "5000",
 							"path": [
@@ -533,15 +533,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/transaction/insert",
-							"protocol": "http",
+							"raw": "https://awesome-stay-api.herokuapp.com/transaction/insert",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"awesome-stay-api",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"transaction",
 								"insert"
@@ -565,15 +563,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/transaction/get",
-							"protocol": "http",
+							"raw": "https://awesome-stay-api.herokuapp.com/transaction/get",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"awesome-stay-api",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"transaction",
 								"get"
@@ -597,15 +593,13 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:5000/transaction/getspecific",
-							"protocol": "http",
+							"raw": "https://awesome-stay-api.herokuapp.com/transaction/getspecific",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"awesome-stay-api",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"transaction",
 								"getspecific"
